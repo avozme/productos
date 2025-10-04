@@ -1,4 +1,4 @@
-Este repositorio contiene un CRUD de una tabla de productos de una aplicación web ficticia. Lo utilizo para ilustrar el uso de Laravel en la construcción de aplicaciones web backend con vistas con mi alumnado.
+Este repositorio contiene un CRUD de una tabla de productos de una aplicación web ficticia. Lo utilizo para mostrar a mi alumnado el uso de Laravel en la construcción de aplicaciones web backend con vistas.
 
 Supondremos que en la base de datos existe una tabla llamada *products* con los campos *id, name, description* y *price*.
 

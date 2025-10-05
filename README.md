@@ -10,7 +10,7 @@ Vamos a construir el controlador, el modelo y las vistas necesarias para hacer e
 
 Para esta miniaplicación solo necesitamos una migración, puesto que solo tenemos que crear una tabla.
 
-La migración se crea con el comando ```php artisan make:migration create_table_products``` y se escribe en el archivo ***/database/migrations/_timestamp_create_products_table.php***
+La migración se crea con el comando ```php artisan make:migration create_products_table``` y se escribe en el archivo ***/database/migrations/_timestamp_create_products_table.php***
 
 ## 1.2. Seeders
 

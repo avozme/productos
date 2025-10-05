@@ -62,7 +62,7 @@ Si en su lugar usamos ```php artisan make:controller ProductController --resourc
 
 El modelo de productos se crea con el comando ```php artisan make:model Product```.
 
-El archivo con el modelo se generará en ***app/models/product.php***.
+El archivo con el modelo se generará en ***app/Models/Product.php***.
 
 No es necesario tocar este archivo: puedes dejarlo, de momento, tal y como lo ha generado Artisan. Normalmente, los modelos solo se manipulan si tenemos que definir relaciones con otras tablas, cosa que aquí no ocurre, pues nuestro ejemplo es tan sencillo que solo tiene una tabla.
 
@@ -74,29 +74,30 @@ La plantilla principal o *master layout* suele crearse en ***views/layouts/maste
 
 Por supuesto, puedes hacerla como quieras. Aquí te propongo un *master layout* muy sencillito al que luego le podrás ir añadiendo cosas fácilmente.
 
-## 5.2. Vista de todos los productos
+## 5.2. Vistas de los productos
 
-La vista con todos los productos la hemos llamado ***views/products/all.blade.php***.
+La vista con todos los productos la hemos llamado ***views/products/index.blade.php***.
 
-## 5.3. Vista de creación/modificación de productos
+La vista de un solo producto la hemos llamado ***views/products/show.blade.php***.
 
-Reutilizaremos la vista para crear y modificar productos, puesto que son prácticamente iguales. El archivo de la vista lo hemos llamado ***views/products/form.blade.php***.
+## 5.3. Vistas de creación/modificación de productos
 
-Es interesante que observes en ese archivo cómo se genera una cabecera de formulario distinta según se vaya a usar el formulario para crear o para modificar un producto. Asímismo, fíjate en cómo se rellenan los atributos *value* de los campos del formulario con los datos actuales del producto (en caso de que existan).
+En esta ocasión hemos usado vistas diferentes para crear y modificar productos. A veces, esta vista se unifica en una sola, puesto que son muy parecidas.
+
+Los archivo de las vistas los hemos llamado ***views/products/create.blade.php*** y ***views/products/edit.blade.php***.
 
 # 6. Lanzar la aplicación
 
-Primero, lanza las migraciones y los seeders con ```php artisan migrate:fresh --seed```. Asegúrate de haber añadido tu seeder de productos a *DatabaseSeeder.php* para que se lance automáticamente tras las migraciones. Si todo va bien, la aplicación estará lista para responder en **https://tu-servidor-local/products**
+Primero, lanza las migraciones y los seeders con ```php artisan migrate:fresh --seed```. Asegúrate de haber añadido tu seeder de productos a *DatabaseSeeder.php* para que se lance automáticamente tras las migraciones. 
 
-Después, simplemente prueba la aplicación en tu navegador web preferido.
+Si todo va bien, la aplicación estará lista para responder en **https://tu-servidor-local/products**, así que solo te faltaría probar la aplicación con tu navegador web preferido.
 
 # 7. Y después, ¿qué?
 
 El código que se muestra en este repositorio es solo un pequeño ejemplo y se puede mejorar de muchísimas maneras, por supuesto. Estas son algunas mejoras evidentes:
 
-* Programar la vista ***products/show.blade.php***, que está ausente en el código anterior. Esa es la vista que mostrará un producto individual. Si intentas lanzarla ahora pidiendo la ruta *https://tu-servidor/products/1* (sustituye 1 por el ID de cualquier producto), verás que Laravel te da un error de "View not found".
-* Se puede alterar el aspecto visual de la aplicación trabajando el *master layout* y añadiendo algo de CSS y/o Javascript, sin que haya que tocar el resto de vistas.
+* Se puede alterar el aspecto visual de la aplicación trabajando el *master layout* y añadiendo CSS y/o Javascript, sin que haya que tocar el resto de vistas.
 * A partir de ahí, habría que seguir construyendo la aplicación, añadiendo más tablas con su correspondientes controladores, modelos y vistas. Llegará un momento en el que tendremos que crear las relaciones entre las tablas en los modelos, como explicamos en el apartado dedicado a Eloquent.
-* Otro paso posible, común a muchas aplicaciones web, sería añadir un sistema de autenticación con **Laravel Breeze**.
+* Otro paso posible, común a muchas aplicaciones web, sería añadir un sistema de autenticación, por ejemplo con **Laravel Breeze**.
 
 Utiliza este código fuente como punto de partida para tus propios desarrollos con Laravel. Cuando hayas cogido un poco de práctica, verás que resulta mucho más rápido montar una aplicación web convencional con Laravel que hacerlo con PHP clásico.

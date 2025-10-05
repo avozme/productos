@@ -29,19 +29,21 @@ El código fuente que presento aquí genera 200 productos aleatorios y realistas
 El enrutador de una aplicación Laravel está en ***/routes/web.php***. Basta con abrirlo y añadir esta línea:
 
 ```php
-Route::resource('products', 'ProductController');
+use App\Http\Controllers\ProductController;
+Route::resource('products', ProductController::class);
 ```
 
 Alternativamente, podrías crear a mano las siete entradas correspondientes a las **siete rutas REST**, así:
 
 ```php
-Route::get('product', 'ProductController@index')->name('product.index');
-Route::get('product/{product}', 'ProductController@show')->name('product.show');
-Route::get('product/create', 'ProductController@create')->name('product.create');
-Route::post('product/{product}', 'ProductController@store')->name('product.store');
-Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
-Route::patch('product/{product}', 'ProductController@update')->name('product.update');
-Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
+use App\Http\Controllers\ProductController;
+Route::get('product', [ProductController::class, 'index'])->name('product.index');
+Route::get('product/{product}', [ProductController::class, 'show'])->name('product.show');
+Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('product/{product}', [ProductController::class, 'store'])->name('product.store');
+Route::get('product/{product}/edit', [ProductController::class, 'edit'])->name('product.edit');
+Route::patch('product/{product}', [ProductController::class, 'update'])->name('product.update');
+Route::delete('product/{product}', [ProductController::class, 'destroy'])->name('product.destroy');
 ```
 
 El resultado sería el mismo, pero si defines manualmente las rutas, tienes más control sobre cómo son exactamente. Por ejemplo, puedes traducirlas a español (¿qué tal cambiar "product/create" por "producto/crear"?). 

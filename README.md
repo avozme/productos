@@ -1,100 +1,61 @@
-Este repositorio contiene un CRUD de una tabla de productos de una aplicación web ficticia. Lo utilizo para mostrar a mi alumnado el uso de Laravel en la construcción de aplicaciones web backend con vistas.
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-Supondremos que en la base de datos existe una tabla llamada *products* con los campos *id, name, description* y *price*.
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Vamos a construir el controlador, el modelo y las vistas necesarias para hacer el **CRUD completo** (create-read-update-delete) de esta tabla con Laravel, sin olvidarnos de las migraciones, los seeders y, por supuesto, el enrutador.
+## About Laravel
 
-# 1. Base de datos
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-## 1.1. Migraciones
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Para esta miniaplicación solo necesitamos una migración, puesto que solo tenemos que crear una tabla.
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-La migración se crea con el comando ```php artisan make:migration create_table_products``` y se escribe en el archivo ***/database/migrations/_timestamp_create_products_table.php***
+## Learning Laravel
 
-## 1.2. Seeders
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-Con el *seeder* vamos a cargar unos cuantos datos de prueba. Obviamente, puedes cambiarlos por los que tú quieras.
+You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-El seeder se crea con el comando ```php artisan make:seeder ProductsTableSeeder```, que generará el archivo ***/database/seeders/ProductTableSeeder.php***.
+If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-Recuerda que, para poder lanzar el seeder automáticamente con ```php artisan migrate:fresh --seed``` u otro comando similar, tienes que editar el archivo *DatabaseSeeder.php* y añadir la línea ```$this->call([ProductsTableSeeder::class]);``` al método *run()*.
+## Laravel Sponsors
 
-En cualquier caso, siempre puedes lanzar el *seeder* manualmente en cualquier momento con ```php artisan db:seed --class=ProductsTableSeeder```.
+We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-El código fuente que presento aquí genera 200 productos aleatorios y realistas 
+### Premium Partners
 
-# 2. Enrutador
+- **[Vehikl](https://vehikl.com)**
+- **[Tighten Co.](https://tighten.co)**
+- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+- **[64 Robots](https://64robots.com)**
+- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
+- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+- **[Redberry](https://redberry.international/laravel-development)**
+- **[Active Logic](https://activelogic.com)**
 
-El enrutador de una aplicación Laravel está en ***/routes/web.php***. Basta con abrirlo y añadir esta línea:
+## Contributing
 
-```php
-Route::resource('products', 'ProductController');
-```
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-Alternativamente, podrías crear a mano las siete entradas correspondientes a las **siete rutas REST**, así:
+## Code of Conduct
 
-```php
-Route::get('product', 'ProductController@index')->name('product.index');
-Route::get('product/{product}', 'ProductController@show')->name('product.show');
-Route::get('product/create', 'ProductController@create')->name('product.create');
-Route::post('product/{product}', 'ProductController@store')->name('product.store');
-Route::get('product/{product}/edit', 'ProductController@edit')->name('product.edit');
-Route::patch('product/{product}', 'ProductController@update')->name('product.update');
-Route::delete('product/{product}', 'ProductController@destroy')->name('product.destroy');
-```
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-El resultado sería el mismo, pero si defines manualmente las rutas, tienes más control sobre cómo son exactamente. Por ejemplo, puedes traducirlas a español (¿qué tal cambiar "product/create" por "producto/crear"?). 
+## Security Vulnerabilities
 
-O podrías hacer algún cambio más profundo a nivel técnico. Por ejemplo, que la petición para hacer *delete* llegue por GET en lugar de por DELETE (así no tendrías que usar un botón de formulario para lanzar el borrado de un producto y podrías lanzarlo con un link).
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-Eso sí: ten en cuenta que, si haces algún cambio de este tipo en las rutas, tu servidor ya no será 100% REST. 
+## License
 
-# 3. Controlador
-
-El controlador de productos se crea con el comando ```php artisan make:controller ProductController```.
-
-El archivo se generará en ***/app/Http/Controllers/ProductController.php*** y contiene un esqueleto o andamio (*scaffolding*) del controlador final. Hemos de rellenar el código de los 7 métodos REST para que funcione.
-
-# 4.Modelo
-
-El modelo de productos se crea con el comando ```php artisan make:model Product```.
-
-El archivo con el modelo se generará en ***app/models/product.php***.
-
-No es necesario tocar este archivo: puedes dejarlo, de momento, tal y como lo ha generado Artisan. Normalmente, los modelos solo se manipulan si tenemos que definir relaciones con otras tablas, cosa que aquí no ocurre, pues nuestro ejemplo es tan sencillo que solo tiene una tabla.
-
-# 5. Vistas
-
-## 5.1. Master layout
-
-La plantilla principal o *master layout* debe crearse en ***views/layouts/master.blade.php***.
-
-Por supuesto, puedes hacerla como quieras. Aquí te propongo un *master layout* muy sencillito al que luego le podrás ir añadiendo cosas fácilmente.
-
-## 5.2. Vista de todos los productos
-
-La vista con todos los productos la hemos llamado ***views/products/all.blade.php***.
-
-## 5.3. Vista de creación/modificación de productos
-
-Reutilizaremos la vista para crear y modificar productos, puesto que son prácticamente iguales. El archivo de la vista lo hemos llamado ***views/products/form.blade.php***.
-
-Es interesante que observes en ese archivo cómo se genera una cabecera de formulario distinta según se vaya a usar el formulario para crear o para modificar un producto. Asímismo, fíjate en cómo se rellenan los atributos *value* de los campos del formulario con los datos actuales del producto (en caso de que existan).
-
-# 6. Lanzar la aplicación
-
-Primero, lanza las migraciones y los seeders con ```php artisan migrate:fresh --seed```. Asegúrate de haber añadido tu seeder de productos a *DatabaseSeeder.php* para que se lance automáticamente tras las migraciones. Si todo va bien, la aplicación estará lista para responder en **https://tu-servidor-local/products**
-
-Después, simplemente prueba la aplicación en tu navegador web preferido.
-
-# 7. Y después, ¿qué?
-
-El código que se muestra en este repositorio es solo un pequeño ejemplo y se puede mejorar de muchísimas maneras, por supuesto. Estas son algunas mejoras evidentes:
-
-* Programar la vista ***products/show.blade.php***, que está ausente en el código anterior. Esa es la vista que mostrará un producto individual. Si intentas lanzarla ahora pidiendo la ruta *https://tu-servidor/products/1* (sustituye 1 por el ID de cualquier producto), verás que Laravel te da un error de "View not found".
-* Se puede alterar el aspecto visual de la aplicación trabajando el *master layout* y añadiendo algo de CSS y/o Javascript, sin que haya que tocar el resto de vistas.
-* A partir de ahí, habría que seguir construyendo la aplicación, añadiendo más tablas con su correspondientes controladores, modelos y vistas. Llegará un momento en el que tendremos que crear las relaciones entre las tablas en los modelos, como explicamos en el apartado dedicado a Eloquent.
-* Otro paso posible, común a muchas aplicaciones web, sería añadir un sistema de autenticación con **Laravel Breeze**.
-
-Utiliza este código fuente como punto de partida para tus propios desarrollos con Laravel. Cuando hayas cogido un poco de práctica, verás que resulta mucho más rápido montar una aplicación web convencional con Laravel que hacerlo con PHP clásico.
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).

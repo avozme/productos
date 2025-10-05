@@ -52,9 +52,9 @@ Eso sí: ten en cuenta que, si haces algún cambio de este tipo en las rutas, tu
 
 # 3. Controlador
 
-El controlador de productos se crea con el comando ```php artisan make:controller ProductController```.
+El controlador de productos se crea con el comando ```php artisan make:controller ProductController```. El archivo se generará en ***/app/Http/Controllers/ProductController.php***
 
-El archivo se generará en ***/app/Http/Controllers/ProductController.php*** y contiene un esqueleto o andamio (*scaffolding*) del controlador final. Hemos de rellenar el código de los 7 métodos REST para que funcione.
+Si en su lugar usamos ```php artisan make:controller ProductController --resource```,  el controlador se creará con un esqueleto o andamio (*scaffolding*) para las siete operaciones REST, listo para que rellenemos lo que sea necesario en cada método.
 
 # 4.Modelo
 

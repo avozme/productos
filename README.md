@@ -16,11 +16,11 @@ La migración se crea con el comando ```php artisan make:migration create_produc
 
 Con el *seeder* vamos a cargar unos cuantos datos de prueba. Obviamente, puedes cambiarlos por los que tú quieras.
 
-El seeder se crea con el comando ```php artisan make:seeder ProductsTableSeeder```, que generará el archivo ***/database/seeders/ProductTableSeeder.php***.
+El seeder se crea con el comando ```php artisan make:seeder ProductSeeder```, que generará el archivo ***/database/seeders/ProductSeeder.php***.
 
-Recuerda que, para poder lanzar el seeder automáticamente con ```php artisan migrate:fresh --seed``` u otro comando similar, tienes que editar el archivo *DatabaseSeeder.php* y añadir la línea ```$this->call([ProductsTableSeeder::class]);``` al método *run()*.
+Recuerda que, para poder lanzar el seeder automáticamente con ```php artisan migrate:fresh --seed``` u otro comando similar, tienes que editar el archivo *DatabaseSeeder.php* y añadir la línea ```$this->call([ProductSeeder::class]);``` al método *run()*.
 
-En cualquier caso, siempre puedes lanzar el *seeder* manualmente en cualquier momento con ```php artisan db:seed --class=ProductsTableSeeder```.
+En cualquier caso, siempre puedes lanzar el *seeder* manualmente en cualquier momento con ```php artisan db:seed --class=ProductSeeder```.
 
 El código fuente que presento aquí genera 200 productos aleatorios y realistas 
 

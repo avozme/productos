@@ -26,7 +26,7 @@ El código fuente que presento aquí genera 200 productos aleatorios y realistas
 
 # 2. Enrutador
 
-El enrutador de una aplicación Laravel está en ***/routes/web.php***. Basta con abrirlo y añadir esta línea:
+El enrutador de una aplicación Laravel está en ***/routes/web.php***. Basta con abrirlo y añadir estas líneas:
 
 ```php
 use App\Http\Controllers\ProductController;
@@ -70,7 +70,7 @@ No es necesario tocar este archivo: puedes dejarlo, de momento, tal y como lo ha
 
 ## 5.1. Master layout
 
-La plantilla principal o *master layout* debe crearse en ***views/layouts/master.blade.php***.
+La plantilla principal o *master layout* suele crearse en ***views/layouts/master.blade.php*** o en ***views/layouts/app.blade.php***.
 
 Por supuesto, puedes hacerla como quieras. Aquí te propongo un *master layout* muy sencillito al que luego le podrás ir añadiendo cosas fácilmente.
 
